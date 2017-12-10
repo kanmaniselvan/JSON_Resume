@@ -2,74 +2,125 @@
 <head>
     <link rel="stylesheet" type="text/css" href="src/resume.css">
     <script src="src/resume.js"></script>
-    <script src="src/handlebars.runtime-v4.0.11.js"></script>
+    <script src="src/handlebars-v3.0.3.js"></script>
 </head>
 <body>
-<script id="entry-template" type="text/x-handlebars-template">
-    <div class="resume-input">
-        <label for="resume-ip"></label>
-        Paste your JSON here: <textarea id="resume-ip" ></textarea>
-        <button onclick="updateResumeTemplate()" id="update-resume-btn">Update Resume</button>
-    </div>
-    <div class="resume-head">
-        <div class="info-summary">
-            <div class="name">
+<div class="resume-input">
+    <label for="resume-ip"></label>
+    Paste your JSON here: <textarea id="resume-ip" ></textarea>
+    <button onclick="updateResumeTemplate()" id="update-resume-btn">Update Resume</button>
+</div>
 
+<script id="resume-template" type="text/x-handlebars-template">
+    <div>&nbsp;</div>
+    <div class="resume-head">
+        <h3 align="center">Resume</h3>
+        <div class="info-summary section">
+            <div class="name">
+                {{info_summary.name}}
             </div>
             <div class="title">
-
+                {{info_summary.title}}
             </div>
+            <div>&nbsp;</div>
             <div class="summary">
-
+                <span class="section-label"><i>summary:</i></span>
+                {{info_summary.summary}}
             </div>
         </div>
-        <div class="contact-details">
-            <div class="email">
 
-            </div>
-            <div class="phone">
-
-            </div>
-            <div class="skype">
-
-            </div>
-            <div class="current-location">
-
-            </div>
+        <div class="contact-details section">
+            {{#if contact_details.phone}} <span class="section-label"><i>email:</i></span> {{contact_details.phone}} {{/if}}
+            {{#if contact_details.email}}  | <span class="section-label"><i>phone:</i></span> {{contact_details.email}} {{/if}}
+            {{#if contact_details.skype}}  | <span class="section-label"><i>skype:</i></span> {{contact_details.skype}} {{/if}}
+            {{#if contact_details.current_location}}  | <span class="section-label"><i>location:</i></span> {{contact_details.current_location}} {{/if}}
         </div>
     </div>
     <div class="resume-body">
-        <div class="flex-box work-experience-column">
-            <div class="work">
-                <div class="position-info">
+        <div class="skills section">
+            <span class="section-label"><i>Skills</i></span>
+            <div>&nbsp;</div>
 
+            <div>
+                {{#each skills}}
+                <span class="highlight">
+                {{this}}
+            </span>
+                {{/each}}
+            </div>
+
+        </div>
+
+        <div class="work section">
+            <span class="section-label"><i>Work achievements</i></span>
+            <div>&nbsp;</div>
+
+            {{#each work_experience}}
+            <div class="position-info">
+                <div class="title">
+                    <strong>{{this.title}}</strong>  {{#if this.company}} - <a href="{{this.company_website}}">{{this.company}}</a> {{/if}}
                 </div>
 
-                <div class="position-description">
+                <div>&nbsp;</div>
 
+                <div class="duration-location">
+                    {{this.duration}} {{#if this.location}} | {{this.location}} {{/if}}
+                </div>
+
+                <div class="achievements">
+                    <ul>
+                        {{#each this.achievements}}
+                        <li>
+                            {{this}}
+                        </li>
+                        {{/each}}
+                    </ul>
                 </div>
             </div>
-            <div class="education">
+            {{/each}}
+        </div>
 
+        <div class="education section">
+            <span class="section-label"><i>Education</i></span>
+            <div>&nbsp;</div>
+
+            <div class="degree">
+                <strong>{{education.degree}}</strong> {{#if education.field}} - {{education.field}} {{/if}}
+            </div>
+
+            <div class="university">
+                {{education.university}} {{#if education.duration}} ({{education.duration}}) {{/if}}
             </div>
         </div>
 
-        <div class="flex-box skills-column">
-            <div class="skills">
-            <span class="highlight">
+        <div class="personal-projects section">
+            <span class="section-label"><i>Personal Projects</i></span>
 
-            </span>
+            <ul>
+                {{#each personal_projects}}
+                <li>
+                    <div class="name">
+                        <a href="{{this.link}}">{{this.name}}</a> {{#if this.description}} - {{this.description}} {{/if}}
+                    </div>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+
+        <div class="languages section">
+            <span class="section-label"><i>Languages</i></span>
+            <div>&nbsp;</div>
+
+            {{#each languages}}
+            <div class="name">
+                {{this.name}} {{#if this.level}} - {{this.level}} {{/if}}
             </div>
-
-            <div class="personal-projects">
-
-            </div>
-
-            <div class="languages">
-
-            </div>
+            {{/each}}
         </div>
     </div>
 </script>
+<div id="compiled-resume">
+
+</div>
 </body>
 </html>

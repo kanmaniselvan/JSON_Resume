@@ -1,12 +1,12 @@
 body {
     margin: 0;
+    font-family: Helvetica, sans-serif;
 }
 .resume-input {
     line-height: 80px;
     text-align: center;
-
-    border-bottom: 1px solid #bfbfbf;
 }
+
 #resume-ip, #update-resume-btn {
     vertical-align: middle;
 }
@@ -14,4 +14,36 @@ body {
 #resume-ip {
     width: 60%;
     height: 10%;
+}
+
+.section {
+    padding: 2%;
+    border: 2px solid #bfbfbf;
+    border-left: 20px solid #bfbfbf;
+}
+
+.info-summary .name {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.section-label {
+    font-weight: bold;
+    text-transform: capitalize;
+    color: #474839;
+    margin-top: 3px;
+}
+.highlight {
+    border: 1px solid #d1d3ce;
+    font-family: "Source Code Pro", Monaco, monospace;
+    display: inline-block;
+    margin: 2px;
+    padding: 2px;
+    color: #333431;
+    font-size: 12px;
+}
+
+.work .position-info {
+    margin-top: 10px;
+    border-bottom: 1px solid #bfbfbf;
 }
