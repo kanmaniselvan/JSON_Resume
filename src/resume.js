@@ -83,6 +83,7 @@ var resume_data = {
 
 window.onload = function(){
     document.getElementById("resume-ip").value = JSON.stringify(resume_data);
+    document.getElementById('update-resume-btn').click();
 };
 
 function updateResumeTemplate() {
@@ -92,4 +93,5 @@ function updateResumeTemplate() {
     } catch (e) {
         alert(e);
     }
+    console.log(resume_data)
 }

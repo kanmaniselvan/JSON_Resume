@@ -2,72 +2,74 @@
 <head>
     <link rel="stylesheet" type="text/css" href="src/resume.css">
     <script src="src/resume.js"></script>
+    <script src="src/handlebars.runtime-v4.0.11.js"></script>
 </head>
 <body>
-<div class="resume-input">
-    <label for="resume-ip">
+<script id="entry-template" type="text/x-handlebars-template">
+    <div class="resume-input">
+        <label for="resume-ip"></label>
         Paste your JSON here: <textarea id="resume-ip" ></textarea>
-        <button onclick="updateResumeTemplate()">Update Resume</button>
-    </label>
-</div>
-<div class="resume-head">
-    <div class="info-summary">
-        <div class="name">
-
-        </div>
-        <div class="title">
-
-        </div>
-        <div class="summary">
-
-        </div>
+        <button onclick="updateResumeTemplate()" id="update-resume-btn">Update Resume</button>
     </div>
-    <div class="contact-details">
-        <div class="email">
-
-        </div>
-        <div class="phone">
-
-        </div>
-        <div class="skype">
-
-        </div>
-        <div class="current-location">
-
-        </div>
-    </div>
-</div>
-<div class="resume-body">
-    <div class="flex-box work-experience-column">
-        <div class="work">
-            <div class="position-info">
+    <div class="resume-head">
+        <div class="info-summary">
+            <div class="name">
 
             </div>
+            <div class="title">
 
-            <div class="position-description">
+            </div>
+            <div class="summary">
 
             </div>
         </div>
-        <div class="education">
+        <div class="contact-details">
+            <div class="email">
 
+            </div>
+            <div class="phone">
+
+            </div>
+            <div class="skype">
+
+            </div>
+            <div class="current-location">
+
+            </div>
         </div>
     </div>
+    <div class="resume-body">
+        <div class="flex-box work-experience-column">
+            <div class="work">
+                <div class="position-info">
 
-    <div class="flex-box skills-column">
-        <div class="skills">
+                </div>
+
+                <div class="position-description">
+
+                </div>
+            </div>
+            <div class="education">
+
+            </div>
+        </div>
+
+        <div class="flex-box skills-column">
+            <div class="skills">
             <span class="highlight">
 
             </span>
-        </div>
+            </div>
 
-        <div class="personal-projects">
+            <div class="personal-projects">
 
-        </div>
+            </div>
 
-        <div class="languages">
+            <div class="languages">
 
+            </div>
         </div>
     </div>
-</div>
+</script>
 </body>
 </html>
